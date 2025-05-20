@@ -103,7 +103,76 @@
   </div>
 </section><!-- /About 3 Section -->
 
+<!-- Services Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>Our Services</h2>
+      <p>Explore what we offer</p>
+    </div>
 
+    <div class="position-relative">
+      <!-- Track container -->
+      <div id="carousel-track" class="d-flex overflow-hidden" style="scroll-behavior: smooth;">
+        <!-- Slides -->
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service1.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service2.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service3.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service4.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service5.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service6.jpeg" class="img-fluid rounded" />
+        </div>
+        <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
+          <img src="assets/img/service7.jpeg" class="img-fluid rounded" />
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <button class="btn btn-dark position-absolute top-50 start-0 translate-middle-y z-3" onclick="slideCarousel(-1)">❮</button>
+      <button class="btn btn-dark position-absolute top-50 end-0 translate-middle-y z-3" onclick="slideCarousel(1)">❯</button>
+    </div>
+  </div>
+</section>
+<script>
+  function slideCarousel(direction) {
+    const track = document.getElementById('carousel-track');
+    const slides = track.querySelectorAll('.flex-shrink-0');
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight || 0);
+
+    const totalSlides = slides.length;
+    const visibleSlides = 3;
+
+    const maxScroll = slideWidth * (totalSlides - visibleSlides);
+    const currentScroll = track.scrollLeft;
+
+    if (direction === 1) {
+      if (currentScroll >= maxScroll) {
+        // Loop to beginning
+        track.scrollLeft = 0;
+      } else {
+        track.scrollLeft += slideWidth;
+      }
+    } else {
+      if (currentScroll <= 0) {
+        // Loop to end
+        track.scrollLeft = maxScroll;
+      } else {
+        track.scrollLeft -= slideWidth;
+      }
+    }
+  }
+</script>
     <!-- Team Section -->
     <!-- <section class="team-15 team section" id="team">
       Section Title -->
