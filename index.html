@@ -79,7 +79,27 @@
 
     </div>
   </header>
-
+<!-- Lightbox Modal -->
+<div id="lightbox-overlay" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;">
+  <img id="lightbox-image" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;" alt="">
+  <span onclick="closeLightbox()" style="
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;">&times;</span>
+</div>
   <main class="main">
 
     <!-- Hero Section -->
@@ -745,6 +765,7 @@
     <!-- </section>/Recent Posts Section -->
 
     <!-- Call To Action Section -->
+<!-- Services Section -->
 <section class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-4">
@@ -757,25 +778,25 @@
       <div id="carousel-track" class="d-flex overflow-hidden" style="scroll-behavior: smooth;">
         <!-- Slides -->
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service1.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service1.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service2.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service2.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service3.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service3.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service4.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service4.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service5.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service5.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service6.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service6.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
         <div class="flex-shrink-0 px-2" style="width: 33.3333%;">
-          <img src="assets/img/service7.jpeg" class="img-fluid rounded" />
+          <img src="assets/img/service7.jpeg" class="img-fluid rounded lightbox-trigger" alt="">
         </div>
       </div>
 
@@ -814,8 +835,41 @@
     }
   }
 </script>
-  </main>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImage = document.getElementById('lightbox-image');
 
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    function closeLightbox() {
+      overlay.style.display = 'none';
+      lightboxImage.src = '';
+    }
+
+    window.closeLightbox = closeLightbox;
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) {
+        closeLightbox();
+      }
+    });
+  });
+</script>
+  </main>
+<!-- Lightbox Modal -->
+  <div id="lightbox-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+      background: rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1050;">
+    <img id="lightbox-image" src="" style="max-width:90%; max-height:90%; border-radius:10px;" alt="">
+    <span onclick="closeLightbox()" 
+          style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+  </div>
+  <footer id="footer" class="footer dark-background">
   <footer id="footer" class="footer dark-background">
 
     <div class="footer-top">
